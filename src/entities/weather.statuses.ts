@@ -1,6 +1,6 @@
 export enum WeatherStatuses {
     CLEAR = 'Clear',
-    CLOUDY = 'Partly cloudy',
+    CLOUDY = 'Partly Cloudy',
     SUNNY = 'Sunny',
     OVERCAST = 'Overcast'
 }
