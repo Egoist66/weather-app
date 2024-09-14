@@ -1,5 +1,4 @@
 
-//@ts-ignore
 
 import { fileURLToPath, URL } from 'node:url'
 
@@ -10,7 +9,6 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 
-//@ts-ignore
 
 // https://vitejs.dev/config/
 export default defineConfig({
