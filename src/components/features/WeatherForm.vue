@@ -49,7 +49,7 @@ const { query, getWeatherAppData } = useWeatherApp();
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="css">
 .weather-form {
   display: flex;
   width: 100%;
