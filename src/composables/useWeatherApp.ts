@@ -13,7 +13,7 @@ export const useWeatherApp = () => {
    
 
     watch(query, () => {
-        baseurl.value = `http://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_WEATHER_API_KEY}&q=${query.value}&aqi=no`
+        baseurl.value = `https://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_WEATHER_API_KEY}&q=${query.value}&aqi=no`
     })
 
     const getWeatherAppData = () => {
