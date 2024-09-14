@@ -1,14 +1,18 @@
 <script setup lang="ts">
 
+defineProps<{loader: boolean}>()
+
 </script>
 
 
 <template>
 
-    <div class="lds-ripple">
-        <div></div>
-        <div></div>
-    </div>
+  <div v-if="loader" class="lds-ripple">
+      <div></div>
+      <div></div>
+  </div>
+
+  <span v-else>Search</span>
         
 </template>
 
@@ -19,7 +23,6 @@
 .lds-ripple {
   display: inline-block;
   position: relative;
-  margin-top: 50px;
   width: 80px;
   height: 80px;
 }

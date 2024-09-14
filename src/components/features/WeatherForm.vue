@@ -8,7 +8,7 @@ const { query, getWeatherAppData } = useWeatherApp();
 </script>
 
 <template>
-  <div :style="{width: '100%'}">
+  <div :style="{ width: '100%' }">
     <form class="weather-form" @submit.prevent="getWeatherAppData()">
       <input
         placeholder="Enter a city"
@@ -18,19 +18,33 @@ const { query, getWeatherAppData } = useWeatherApp();
         class="weather-form__input"
       />
 
-      <button :disabled="!query.length" type="submit" class="wheather-from__btn">Search</button>
+      <button
+        v-if="wStore.isLoading"
+        :disabled="!query.length"
+        type="submit"
+        class="wheather-from__btn"
+      >
+        <Loader loader />
+      </button>
+
+      <button
+        v-else
+        :disabled="!query.length"
+        type="submit"
+        class="wheather-from__btn"
+      >
+        Search
+      </button>
     </form>
   </div>
 
   <div class="weather-info">
-    <Loader v-if="wStore.isLoading" />
+    <div class="error" v-if="wStore.Error.length">{{ wStore.Error }}</div>
 
-    <div :style="{width: '100%'}" v-else>
-        <div v-if="wStore.getWeatherData()" class="weather-info__text">
-            <p class="card card-1">{{ wStore.getWeatherData()?.location.name }}</p>
-            <p class="card">{{ wStore.getWeatherData()?.current.temp_c }} °C</p>
-            <p class="card">{{ wStore.getWeatherData()?.current.condition.text }}</p>
-        </div>
+    <div v-if="wStore.getWeatherData()" class="weather-info__text">
+      <p class="card card-1">{{ wStore.getWeatherData()?.location.name }}</p>
+      <p class="card temp">{{ wStore.getWeatherData()?.current.temp_c }} °C</p>
+      <p class="card">{{ wStore.getWeatherData()?.current.condition.text }}</p>
     </div>
   </div>
 </template>
@@ -41,6 +55,18 @@ const { query, getWeatherAppData } = useWeatherApp();
   width: 100%;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+.error {
+  color: red;
+  font-size: 36px;
+  width: 100%;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.temp {
+  color: orange;
 }
 
 .weather-form__input {
@@ -58,6 +84,9 @@ const { query, getWeatherAppData } = useWeatherApp();
 .wheather-from__btn {
   flex-grow: 0.4;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   border: none;
   background-color: var(--accent);

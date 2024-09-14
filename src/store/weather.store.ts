@@ -8,22 +8,25 @@ export const useWheatherStore = defineStore('weather', () => {
 
     const weatherData = ref<WeahterRoot | null>(null)
     const isLoading = ref<boolean>(false)
-    const isError = ref<boolean>(false)
+    const Error = ref<string>('')
 
 
     const setWeatherData = async (baseUrl: string) => {
         try {
-            isError.value = false
+            Error.value = ''
             isLoading.value = true
 
             await delay(500)
             const {data} = await axios.get<WeahterRoot>(baseUrl)
+           
             weatherData.value = data
 
         }
-        catch (error) {
+        catch (error: any) {
 
-            isError.value = true
+           
+            
+            Error.value = error.response.data.error.message
         }
         finally {
             isLoading.value = false
@@ -33,5 +36,5 @@ export const useWheatherStore = defineStore('weather', () => {
         return weatherData.value
     }
 
-    return { setWeatherData, getWeatherData, isLoading, isError, weatherData }
+    return { setWeatherData, getWeatherData, isLoading, Error, weatherData }
 })
