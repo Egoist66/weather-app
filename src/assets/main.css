@@ -1,0 +1,100 @@
+@import "https://fonts.googleapis.com/css?family=Karla:200,300,regular,500,600,700,800,200italic,300italic,italic,500italic,600italic,700italic,800italic";
+:root {
+  --font: "Karla", sans-serif;
+  --accent: #12c0dd;
+  --accent-rgb: 18, 192, 221;
+  --light: #ffff;
+  --border-radius: 10px;
+  --width-line: 2px;
+  --transition: 0.3s;
+}
+a {
+  text-decoration: none;
+}
+body,
+html {
+  margin: 0;
+  box-sizing: border-box;
+  min-width: 100vh;
+  font-family: var(--font);
+}
+body {
+  overflow-x: hidden;
+  height: 100%;
+}
+#app {
+  height: 100%;
+}
+.container {
+  max-width: 1390px;
+  margin: 0 auto;
+  height: 100vh;
+  padding: 0 20px;
+}
+#layout {
+  padding: 0px 0px 0px 0px;
+}
+img {
+  max-width: 100%;
+  display: block;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+input,
+button {
+  font-family: var(--font);
+}
+.weather {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.weather-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.weather-bg > div {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.weather-bg__img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0;
+  transition: all var(--transition) ease-in-out;
+}
+.bg-default {
+  opacity: 1;
+  transition: all var(--transition) ease-in-out;
+}
+.bg-active {
+  opacity: 1 !important;
+  transition: all var(--transition) ease-in-out;
+}
+
+  
+  
+
+@media (max-width: 768px) {
+  .weather {
+    height: auto !important;
+  }
+}
