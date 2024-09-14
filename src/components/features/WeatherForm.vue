@@ -12,7 +12,7 @@ const { query, getWeatherAppData } = useWeatherApp();
     <form class="weather-form" @submit.prevent="getWeatherAppData()">
       <input
         placeholder="Enter a city"
-        type="text"
+        type="search"
         v-model="query"
         name="city"
         class="weather-form__input"
